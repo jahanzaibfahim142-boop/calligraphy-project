@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="login.css">
+<link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+</head>
+
+<body>
+
+<div class="form-box">
+  <span class="close-btn" onclick="goBack()">✖</span>
+
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button class="btn" onclick="login()">Login</button>
+
+  <p>Don't have account? <a href="signup.html">Signup</a></p>
+</div>
+
+<script>
+function goBack() {
+  window.location.href = "index.html";
+}
+
+function login() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  if(email === "" || password === "") {
+    alert("Please fill in all fields!");
+  } else {
+    alert("Login successful!");
+  }
+}
+</script>
+
+</body>
+</html>

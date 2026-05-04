@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Western Calligraphy - QuickCalligraphy</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&family=Uncial+Antiqua&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #4e2c13;
+            --accent-gold: #b08d57;
+            --bg-cream: #fdfaf5;
+            --text-dark: #333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-brown);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .alphabet-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .alphabet-card p {
+            font-family: 'Uncial Antiqua', cursive;
+            color: var(--primary-brown);
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            margin: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--primary-brown);
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 30px;
+            transition: 0.2s;
+        }
+        /* Card with Image Styles */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            /* Clips image to border radius */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-brown);
+            margin-top: 0;
+        }
+
+            /* FOOTER */
+    .footer {
+
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to right, #5a2e0c, #a05a2c);
+    color: #fff;
+    padding: 40px 20px 10px;
+    animation: fadeUp 1s ease;
+    }
+
+    .footer {
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    }
+    /* FOOTER CONTAINER */
+    .footer-container {
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    }
+
+    /* FOOTER BOX */
+    .footer-box {
+    width: 22%;
+    }
+
+    /* LOGO */
+    .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #ffcc70;
+    }
+
+    /* HEADINGS */
+    .footer-box h3 {
+    color: #ffd699;
+    font-family: 'Playfair Display', serif;
+    }
+
+    /* LINKS */
+    .footer-box a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: 0.3s;
+    }
+
+    .footer-box a:hover {
+    color: #ffcc70;
+    padding-left: 6px;
+    }
+
+    /* LEARN BUTTON */
+    .learn-btn {
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #ffcc70;
+    color: #5a2e0c;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+
+    .learn-btn:hover {
+    background: white;
+    color: #a05a2c;
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER BOTTOM */
+    .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    margin-top: 15px;
+    padding-top: 10px;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-box {
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+    }@media (max-width: 480px) {
+
+    .footer {
+        padding: 25px 15px 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .footer-box h3 {
+        font-size: 16px;
+    }
+
+    .footer-box a {
+        font-size: 14px;
+    }
+
+    .learn-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Western Calligraphy</h1>
+    </header>
+
+    <div class="container">
+        <a href="font-stylejazzy.html" class="back-link">← Back to Styles</a>
+
+        <div class="alphabet-card">
+            <p>ABCDEFGHIJKLM</p>
+            <p>NOPQRSTUVWXYZ</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <img src="https://i.etsystatic.com/5927863/r/il/86315a/5981246697/il_794xN.5981246697_mpm6.jpg"
+                    alt="Gothic Script" class="card-img">
+                <div class="card-content">
+                    <h3>The Gothic Era</h3>
+                    <p>Known for its "broken" strokes and dramatic verticality, Blackletter script was the standard for
+                        medieval manuscripts across Europe.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeW2oW7qg_PhYTaet2ZabUMOaLxM4j_YO2eA&s"
+                    alt="Italic Script" class="card-img">
+                <div class="card-content">
+                    <h3>The Italic Hand</h3>
+                    <p>A graceful, slanted script developed during the Italian Renaissance to combine beauty with
+                        writing speed.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQYEzuUEKpM_kMCvQQGGDxUMdGu9Cnvu7Wqw&s"
+                    alt="Roman Capitals" class="card-img">
+                <div class="card-content">
+                    <h3>Roman Capitals</h3>
+                    <p>The foundation of Western lettering, based on stone-carved monument inscriptions that prioritized
+                        perfect geometric proportion.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <footer class="footer">
+  <div class="footer-container">
+
+    <!-- LOGO -->
+    <div class="footer-box">
+      <h2 class="logo">Quick Calligraphy</h2>
+      <p>Elegant calligraphy art & learning platform.</p>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-box">
+      <h3>Explore</h3>
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Fonts</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="footer-box">
+      <h3>Tutorials</h3>
+      <a href="#">Beginner Guide</a>
+      <a href="#">Brush Lettering</a>
+      <a href="#">Modern Script</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>Email: calligraphy@email.com</p>
+      <p>Phone: +92 300 1234567</p>
+
+      <!-- Learn Button -->
+<button class="learn-btn"><a href="login.html">Learn With Us </a></button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Calligraphy Studio</p>
+  </div>
+</footer>
+
+</body>
+
+</html>

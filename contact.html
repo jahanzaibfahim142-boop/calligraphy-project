@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact - QuickCalligraphy</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assest/images/LOGO_3-removebg-preview.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f7f3;
+}
+
+/* Navbar */
+.bgcolor {
+    background-color: #572e13;
+}
+
+.navbar-brand {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffcc70 !important;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 60px 20px;
+}
+
+.contact-box {
+    background: #572e13;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    animation: fadeUp 1s ease;
+}
+
+.contact-box h2 {
+    color: #ffcc70;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Button */
+.btn-custom {
+    background: #ffcc70;
+    color: #572e13;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.btn-custom:hover {
+    background: white;
+    color: #572e13;
+}
+
+/* Contact Info */
+.info-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-box i {
+    font-size: 25px;
+    color: #572e13;
+    margin-bottom: 10px;
+}
+
+/* Social Icons */
+.social-icons a {
+    margin: 0 10px;
+    font-size: 20px;
+    color: #572e13;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffcc70;
+    transform: scale(1.2);
+}
+
+/* Map */
+.map {
+    margin-top: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Footer */
+.footer {
+    margin-top: 50px;
+    background: linear-gradient(to right, #5a2e0c, #a05a2c);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bgcolor"> 
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand" href="index.html">
+      <img src="assest/images/LOGO_3-removebg-preview.png" alt="logo" style="height:60px;">
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="learn.html">Learn</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="font-stylejazzy.html">Fonts</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="contact.html">Contact</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<!-- CONTACT -->
+<div class="contact-section">
+  <div class="container">
+    <div class="row">
+
+      <!-- FORM -->
+      <div class="col-md-6">
+        <div class="contact-box">
+
+          <h2>Contact Us</h2>
+
+          <form onsubmit="showAlert(event)">
+            <input type="text" class="form-control" placeholder="Your Name" required>
+            <input type="email" class="form-control" placeholder="Your Email" required>
+            <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn-custom w-100">Send Message</button>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="col-md-6">
+
+        <div class="info-box">
+          <i class="fas fa-envelope"></i>
+          <p>calligraphy@email.com</p>
+        </div>
+
+        <div class="info-box">
+          <i class="fas fa-phone"></i>
+          <p>+92 300 1234567</p>
+        </div>
+
+        <div class="info-box">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Karachi, Pakistan</p>
+        </div>
+
+        <!-- Social -->
+        <div class="info-box">
+          <h5>Follow Us</h5>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MAP -->
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?q=karachi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="300" style="border:0;"></iframe>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>© 2026 Quick Calligraphy | All Rights Reserved</p>
+</div>
+
+<script>
+function showAlert(e){
+    e.preventDefault();
+    alert("Message Sent Successfully!");
+}
+</script>
+
+</body>
+</html>

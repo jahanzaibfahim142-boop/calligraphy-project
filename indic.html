@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>QuickCalligraphy</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f7f3;
+}
+
+/* Navbar */
+.header{
+   
+    box-shadow: 0 2px 15px rgba(226, 216, 216, 0.2);
+     background-color: #572e13;
+}
+.bgcolor{
+background-color: #572e13;
+}
+
+.navbar-brand{
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffcc70 !important;
+    letter-spacing: 1px;
+}
+
+img{
+    height: 80px;
+}
+
+.nav-link{
+    transition: 0.3s;
+}
+
+.nav-link:hover{
+    color: #ffcc70 !important;
+    transform: translateY(-2px);
+}
+
+.space{
+    border: 5px solid #f8e090;
+    border-radius: 10px;
+    padding: 10px;
+            align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    width: 100;
+    color: #ffffff;
+        background-color: #572e13;
+}
+
+
+
+/* Cards */
+.card {
+    background: #572e13;
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Button */
+.btn-custom {
+    background: #f8e090;
+    color: #572e13;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Hidden content */
+.more-info {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.more-info.show {
+    margin-top: 10px;
+}
+
+h3, h5 {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to right, #5a2e0c, #a05a2c);
+  color: #fff;
+  padding: 40px 20px 10px;
+  animation: fadeUp 1s ease;
+}
+
+.footer {
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* FOOTER CONTAINER */
+.footer-container {
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* FOOTER BOX */
+.footer-box {
+  width: 22%;
+}
+
+/* LOGO */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: #ffcc70;
+}
+
+/* HEADINGS */
+.footer-box h3 {
+  color: #ffd699;
+  font-family: 'Playfair Display', serif;
+}
+
+/* LINKS */
+.footer-box a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+.footer-box a:hover {
+  color: #ffcc70;
+  padding-left: 6px;
+}
+
+/* LEARN BUTTON */
+.learn-btn {
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #ffcc70;
+  color: #5a2e0c;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.learn-btn:hover {
+  background: white;
+  color: #a05a2c;
+  transform: scale(1.08);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 15px;
+  padding-top: 10px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-box {
+    width: 100%;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}@media (max-width: 480px) {
+
+  .footer {
+    padding: 25px 15px 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .footer-box h3 {
+    font-size: 16px;
+  }
+
+  .footer-box a {
+    font-size: 14px;
+  }
+
+  .learn-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bgcolor"> 
+    <div class="container ">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#"><img src="assest/images/LOGO_3-removebg-preview.png" alt=""></a>
+
+      <!-- Hamburger -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu -->
+      <div class="collapse navbar-collapse " id="navbarNav">
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+
+          <!-- Learn  -->
+          <li class="nav-item">
+            <a class="nav-link" href="learn.html">Learn</a>
+          </li>
+
+          <!-- Styles Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Styles
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="arabic.html">Arabic</a></li>
+              <li><a class="dropdown-item" href="indic.html">Indic</a></li>
+              <li><a class="dropdown-item" href="greek.html">Greek</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="font-stylejazzy.html">Fonts</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+           
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="space">
+    <h2>Indic Calligraphy / देवनागरी कला</h2>
+  </div>
+
+<!-- CARDS -->
+<div class="container py-5">
+<div class="row g-4">
+
+<!-- CARD 1 -->
+<div class="col-md-6 col-lg-3">
+<div class="card h-100">
+    <img src="assest/images/indic 1.jfif" alt="Greek Calligraphy">
+<div class="p-3 text-center">
+<h3>DEVANAGARI</h3>
+<h4>देवनागरी</h4>
+
+<button class="btn btn-custom toggleBtn">View More</button>
+
+
+<div class="more-info">
+<p><strong>Style:</strong> Devanagari Calligraphy</p>
+<p><strong>Origin:</strong> India</p>
+<p><strong>Description:</strong> Used in Hindi & Sanskrit writing with curved strokes.</p>
+<p><strong>Feature:</strong> Top horizontal line (Shirorekha)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- CARD 2 -->
+<div class="col-md-6 col-lg-3">
+<div class="card h-100">
+    <img src="assest/images/indic 2.jfif" alt="Greek Calligraphy">
+<div class="p-3 text-center">
+<h3>BENGALI</h3>
+<h4>বাংলা</h4>
+<button class="btn btn-custom toggleBtn">View More</button>
+
+<div class="more-info">
+<p><strong>Style:</strong> Bengali Calligraphy</p>
+<p><strong>Origin:</strong> Bangladesh & India</p>
+<p><strong>Description:</strong> Rounded and artistic script used in Bengali language.</p>
+<p><strong>Feature:</strong> Smooth curves and soft edges</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- CARD 3 -->
+<div class="col-md-6 col-lg-3">
+<div class="card h-100">
+    <img src="assest/images/indic 6.jfif" alt="Greek Calligraphy">
+<div class="p-3 text-center">
+<h3>TAMIL</h3>
+<h4>தமிழ்</h4>
+<button class="btn btn-custom toggleBtn">View More</button>
+
+<div class="more-info">
+<p><strong>Style:</strong> Tamil Calligraphy</p>
+<p><strong>Origin:</strong> South India</p>
+<p><strong>Description:</strong> Ancient script with circular shapes and elegant flow.</p>
+<p><strong>Feature:</strong> No straight lines, mostly curves</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CARD 4 -->
+<div class="col-md-6 col-lg-3">
+<div class="card h-100">
+    <img src="assest/images/indic 5.jfif" alt="Greek Calligraphy">
+<div class="p-3 text-center">
+<h3>GUJARATI</h3>
+<h4>ગુજરાતી</h4>
+<button class="btn btn-custom toggleBtn">View More</button>
+
+<div class="more-info">
+<p><strong>Style:</strong> Gujarati Calligraphy</p>
+<p><strong>Origin:</strong> Gujarat, India</p>
+<p><strong>Description:</strong> Similar to Devanagari but without top line.</p>
+<p><strong>Feature:</strong> Clean and simple strokes</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- LOGO -->
+    <div class="footer-box">
+      <h2 class="logo">Quick Calligraphy</h2>
+      <p>Elegant calligraphy art & learning platform.</p>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-box">
+      <h3>Explore</h3>
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Fonts</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="footer-box">
+      <h3>Tutorials</h3>
+      <a href="#">Beginner Guide</a>
+      <a href="#">Brush Lettering</a>
+      <a href="#">Modern Script</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>Email: calligraphy@email.com</p>
+      <p>Phone: +92 300 1234567</p>
+
+      <!-- Learn Button -->
+      <button class="learn-btn" onclick="openLogin()">Learn With Us</button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Calligraphy Studio</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll(".toggleBtn").forEach(btn => {
+    btn.addEventListener("click", function () {
+        let info = this.nextElementSibling;
+
+        if (info.style.maxHeight) {
+            info.style.maxHeight = null;
+            this.innerText = "View More";
+        } else {
+            info.style.maxHeight = info.scrollHeight + "px";
+            this.innerText = "View Less";
+        }
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

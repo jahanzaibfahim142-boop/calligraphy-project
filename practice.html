@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calligraphy Challenge - QuickCalligraphy</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Uncial+Antiqua&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #4e2c13;
+            --accent-gold: #b08d57;
+            --bg-cream: #fdfaf5;
+            --white: #ffffff;
+            --success-green: #27ae60;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--primary-brown);
+            overflow-x: hidden;
+            touch-action: manipulation;
+            /* Prevents double-tap zoom on mobile */
+        }
+
+        /* --- Responsive Game Header --- */
+        .game-header {
+            background-color: var(--primary-brown);
+            color: var(--white);
+            padding: 15px 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-weight: 600;
+            font-family: 'Playfair Display';
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                grid-template-columns: 1fr 350px;
+                padding: 30px;
+            }
+        }
+
+        /* --- Workspace --- */
+        .workspace {
+            background: var(--white);
+            padding: clamp(10px, 3vw, 20px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .canvas-area {
+            position: relative;
+            background: #fff;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            height: clamp(300px, 60vh, 450px);
+            cursor: crosshair;
+            overflow: hidden;
+        }
+
+        #practiceCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            touch-action: none;
+        }
+
+        .guide-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #currentGoalChar {
+            font-family: 'Uncial Antiqua', cursive;
+            font-size: clamp(150px, 40vw, 250px);
+            color: rgba(78, 44, 19, 0.05);
+            transition: color 0.3s ease;
+        }
+
+        /* --- UI Elements --- */
+        .controls-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .controls-row {
+                flex-direction: row;
+            }
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-brown);
+            color: white;
+        }
+
+        .btn-next {
+            background: var(--success-green);
+            color: white;
+            display: none;
+        }
+
+        .btn-clear {
+            background: #fdeaea;
+            color: #e74c3c;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .timer-warning {
+            color: #e74c3c;
+            animation: pulse 0.6s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* FOOTER */
+        .footer {
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to right, #5a2e0c, #a05a2c);
+            color: #fff;
+            padding: 40px 20px 10px;
+            animation: fadeUp 1s ease;
+        }
+
+        .footer {
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* FOOTER CONTAINER */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER BOX */
+        .footer-box {
+            width: 22%;
+        }
+
+        /* LOGO */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #ffcc70;
+        }
+
+        /* HEADINGS */
+        .footer-box h3 {
+            color: #ffd699;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* LINKS */
+        .footer-box a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .footer-box a:hover {
+            color: #ffcc70;
+            padding-left: 6px;
+        }
+
+        /* LEARN BUTTON */
+        .learn-btn {
+            margin-top: 10px;
+            padding: 10px 18px;
+            background: #ffcc70;
+            color: #5a2e0c;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .learn-btn:hover {
+            background: white;
+            color: #a05a2c;
+            transform: scale(1.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FOOTER BOTTOM */
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 15px;
+            padding-top: 10px;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .footer-box {
+                width: 100%;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                padding: 25px 15px 10px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .footer-box h3 {
+                font-size: 16px;
+            }
+
+            .footer-box a {
+                font-size: 14px;
+            }
+
+            .learn-btn {
+                width: 100%;
+                padding: 12px;
+            }
+
+            .footer-bottom {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-header">
+        <div class="stat-box">
+            <div class="stat-label">Timer</div>
+            <div class="stat-value" id="timer">01:00</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Score</div>
+            <div class="stat-value" id="score">0</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Streak</div>
+            <div class="stat-value">🔥 5</div>
+        </div>
+    </div>
+    <div class="container">
+        <main>
+            <div class="workspace">
+                <div class="canvas-area" id="canvasWrapper">
+                    <div class="guide-layer"> <span id="currentGoalChar">A</span> </div> <canvas
+                        id="practiceCanvas"></canvas>
+                </div>
+                <div class="controls-row"> <button class="btn btn-clear" onclick="clearCanvas()">Clear Board</button>
+                    <button id="nextBtn" class="btn btn-next" onclick="nextChallenge()">Next Letter →</button> <button
+                        id="startBtn" class="btn btn-primary" onclick="startGame()">Start Sprint</button>
+                </div>
+            </div>
+        </main>
+        <aside>
+            <div class="sidebar-card">
+                <h3 style="margin-top:0; font-family: 'Playfair Display';">Challenge Info</h3>
+                <p id="quizPrompt" style="font-size: 0.85rem; color: #666;"> Master the ghost letter shown on the board.
+                    Click <b>Next Letter</b> once you've finished the stroke! </p>
+            </div>
+            <div class="sidebar-card">
+                <h3 style="margin-top:0; font-family: 'Playfair Display';">Ink Settings</h3>
+                <div style="margin-bottom:15px;"> <label
+                        style="font-size: 0.75rem; font-weight: 600; display:block;">Stroke Size</label> <input
+                        type="range" id="sizePicker" min="1" max="12" value="4"
+                        style="width:100%; accent-color:var(--primary-brown);"> </div>
+                <div> <label style="font-size: 0.75rem; font-weight: 600; display:block;">Color</label> <input
+                        type="color" id="colorPicker" value="#4e2c13"
+                        style="width:100%; height:35px; border:none; background:none; cursor:pointer;"> </div>
+            </div>
+        </aside>
+    </div>
+    <footer class="footer">
+        <div class="footer-container"> <!-- LOGO -->
+            <div class="footer-box">
+                <h2 class="logo">Quick Calligraphy</h2>
+                <p>Elegant calligraphy art & learning platform.</p>
+            </div> <!-- EXPLORE -->
+            <div class="footer-box">
+                <h3>Explore</h3> <a href="#">Home</a> <a href="#">Gallery</a> <a href="#">Fonts</a> <a
+                    href="#">Contact</a>
+            </div> <!-- TUTORIALS -->
+            <div class="footer-box">
+                <h3>Tutorials</h3> <a href="#">Beginner Guide</a> <a href="#">Brush Lettering</a> <a href="#">Modern
+                    Script</a>
+            </div> <!-- CONTACT -->
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>Email: calligraphy@email.com</p>
+                <p>Phone: +92 300 1234567</p> <!-- Learn Button --> <button class="learn-btn"><a href="login.html">Learn
+                        With Us </a></button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Calligraphy Studio</p>
+        </div>
+    </footer>
+ <script>
+    const canvas = document.getElementById('practiceCanvas');
+const ctx = canvas.getContext('2d');
+const wrapper = document.getElementById('canvasWrapper');
+const timerDisplay = document.getElementById('timer');
+const scoreDisplay = document.getElementById('score');
+const goalChar = document.getElementById('currentGoalChar');
+const startBtn = document.getElementById('startBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let score = 0;
+let timeLeft = 60;
+let timerId = null;
+let isDrawing = false;
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// --- 1. Responsive Canvas Setup ---
+function initCanvas() {
+    // Get the actual size of the container
+    const rect = wrapper.getBoundingClientRect();
+    
+    // Set internal resolution to match display size
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    
+    // Reset context properties (lost after resize)
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+}
+
+// Re-initialize when window changes size
+window.addEventListener('resize', initCanvas);
+initCanvas();
+
+// --- 2. Game Logic ---
+function startGame() {
+    score = 0;
+    timeLeft = 60;
+    scoreDisplay.innerText = score;
+    
+    // UI Updates
+    startBtn.style.display = 'none';
+    nextBtn.style.display = 'block';
+    
+    // Set letter visibility to be clearly visible
+    goalChar.style.color = "rgba(78, 44, 19, 0.15)";
+    
+    clearCanvas();
+    if(timerId) clearInterval(timerId);
+    runTimer();
+}
+
+function runTimer() {
+    timerId = setInterval(() => {
+        timeLeft--;
+        let secs = timeLeft % 60;
+        
+        // FIXED: Using backticks for template literal
+        timerDisplay.innerText = `00:${secs.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 10) {
+            timerDisplay.classList.add('timer-warning');
+        }
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerId);
+            alert("Time's up! Letters mastered: " + score);
+            resetGame();
+        }
+    }, 1000);
+}
+
+function nextChallenge() {
+    score++;
+    scoreDisplay.innerText = score;
+    
+    // Pick new letter
+    goalChar.innerText = alphabet[Math.floor(Math.random() * alphabet.length)];
+    clearCanvas();
+    
+    // Visual feedback: Green flash on success
+    goalChar.style.color = "rgba(39, 174, 96, 0.4)";
+    setTimeout(() => {
+        goalChar.style.color = "rgba(78, 44, 19, 0.15)";
+    }, 400);
+}
+
+function resetGame() {
+    startBtn.style.display = 'block';
+    nextBtn.style.display = 'none';
+    timerDisplay.classList.remove('timer-warning');
+    timerDisplay.innerText = "01:00";
+    goalChar.style.color = "rgba(78, 44, 19, 0.05)"; // Dimmed when not playing
+}
+
+// --- 3. Drawing Logic ---
+function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    // Handle both touch and mouse coordinates
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    return { 
+        x: clientX - rect.left, 
+        y: clientY - rect.top 
+    };
+}
+
+function startDraw(e) {
+    isDrawing = true;
+    ctx.beginPath();
+    const pos = getPos(e);
+    ctx.moveTo(pos.x, pos.y);
+}
+
+function draw(e) {
+    if (!isDrawing) return;
+    
+    // Prevent scrolling on mobile while drawing
+    if (e.cancelable) e.preventDefault();
+    
+    const pos = getPos(e);
+    ctx.lineWidth = document.getElementById('sizePicker').value;
+    ctx.strokeStyle = document.getElementById('colorPicker').value;
+    
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+}
+
+// Event Listeners for PC
+canvas.addEventListener('mousedown', startDraw);
+canvas.addEventListener('mousemove', draw);
+window.addEventListener('mouseup', () => isDrawing = false);
+
+// Event Listeners for Mobile
+canvas.addEventListener('touchstart', startDraw, {passive: false});
+canvas.addEventListener('touchmove', draw, {passive: false});
+canvas.addEventListener('touchend', () => isDrawing = false);
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+ </script>
+
+</html> <!-- C:\Users\asp.APTECHNN2\Downloads\Downloads\calligraphy project\practice.html --> practice letter is getting
+<!-- invisible into few seon -->

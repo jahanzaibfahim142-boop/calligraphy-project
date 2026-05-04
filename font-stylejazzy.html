@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickCalligraphy</title>
+<link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bgcolor{
+    background-color:#572E13;
+}
+
+.navbar-brand img{
+    height:60px;
+    object-fit:contain;
+}
+
+.nav-link{
+    transition:0.3s;
+}
+
+.nav-link:hover{
+    color:#f8e090 !important;
+    transform:translateY(-2px);
+}
+
+body {
+  font-family: Arial;
+  background: #fdf6e3;
+  padding-bottom: 0px;
+}
+
+/* HEADER */
+header {
+  background: #572e13;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+/* MAIN */
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+    /* Navbar */
+    nav {
+      background-color: #f8e090;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color:#572e13;
+      margin: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Card Styling */
+    .font-box {
+      background: rgb(87, 46, 19);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(12, 12, 12, 0.15);
+      transition: 0.4s;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .font-box:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Text */
+    .sample {
+      
+  font-size: 20px;   /* pehle 28px tha, thoda kam karo */
+  margin-top: 15px;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+   word-break: break-all; /* 🔥 ye line add karo */
+
+    }
+
+    .western {
+      font-family: "Times New Roman", serif;
+    }
+
+    .arabic {
+      direction: rtl;
+    }
+
+    .oriental {
+      font-family: "KaiTi", serif;
+    }
+
+    /* Button */
+    .btn-custom {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background:#f8e090;
+      color: #572e13;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .btn-custom:hover {
+      background: rgb(248, 186, 105);
+    }
+
+    /* FOOTER */
+    .footer {
+
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to right, #5a2e0c, #a05a2c);
+    color: #fff;
+    padding: 40px 20px 10px;
+    animation: fadeUp 1s ease;
+    }
+
+    .footer {
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    }
+    /* FOOTER CONTAINER */
+    .footer-container {
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    }
+
+    /* FOOTER BOX */
+    .footer-box {
+    width: 22%;
+    }
+
+    /* LOGO */
+    .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #ffcc70;
+    }
+
+    /* HEADINGS */
+    .footer-box h3 {
+    color: #ffd699;
+    font-family: 'Playfair Display', serif;
+    }
+
+    /* LINKS */
+    .footer-box a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: 0.3s;
+    }
+
+    .footer-box a:hover {
+    color: #ffcc70;
+    padding-left: 6px;
+    }
+
+    /* LEARN BUTTON */
+    .learn-btn {
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #ffcc70;
+    color: #5a2e0c;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+
+    .learn-btn:hover {
+    background: white;
+    color: #a05a2c;
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER BOTTOM */
+    .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    margin-top: 15px;
+    padding-top: 10px;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-box {
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+    }@media (max-width: 480px) {
+
+    .footer {
+        padding: 25px 15px 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .footer-box h3 {
+        font-size: 16px;
+    }
+
+    .footer-box a {
+        font-size: 14px;
+    }
+
+    .learn-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+    }
+
+
+</style>
+  </style>
+</head>
+
+<body>
+
+  <!-- <header>
+    <h1>QuickCalligraphy</h1>
+    <p>Explore Beautiful Fonts & Letters</p>
+  </header> -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bgcolor"> 
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand" href="index.html">
+      <img src="assest/images/LOGO_3-removebg-preview.png" alt="logo">
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="learn.html">Learn</a>
+        </li>
+
+        <!-- Styles Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Styles
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="arabic.html">Arabic</a></li>
+            <li><a class="dropdown-item" href="indic.html">Indic</a></li>
+            <li><a class="dropdown-item" href="greek.html">Greek</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="font-stylejazzy.html">Fonts</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+  <div class="container py-4">
+
+    <h2 style="font-style: italic; text-align: center; color: whitesmoke;">Fonts & Calligraphy Styles</h2>
+
+    <div class="row g-4 mt-3">
+
+      <!-- Western -->
+      <div class="col-12 col-md-6 col-lg-3" style="color: whitesmoke;">
+        <div class="font-box text-center">
+          <h3>Western Calligraphy</h3>
+          <p>Classic and elegant styles like Italic and Gothic.</p>
+          <div class="sample western">
+  ABCDEFGHIJ<br>
+  KLMNOPQRST<br>
+  UVWXYZ
+</div>
+          <a href="western.html" class="btn-custom">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Arabic -->
+      <div class="col-12 col-md-6 col-lg-3" style="color: whitesmoke;">
+        <div class="font-box text-center">
+          <h3>Arabic Calligraphy</h3>
+          <p>Flowing artistic script with deep cultural roots.</p>
+          <div class="sample arabic">
+            الخط العربي جميل جدا
+          </div>
+          <a href="arabic.html" class="btn-custom">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Oriental -->
+      <div class="col-12 col-md-6 col-lg-3" style="color: whitesmoke;">
+        <div class="font-box text-center">
+          <h3>Oriental Calligraphy</h3>
+          <p>Brush-style writing used in Chinese & Japanese art.</p>
+          <div class="sample oriental">
+            書道は美しい芸術です
+          </div>
+          <a href="oriental.html" class="btn-custom">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Practice -->
+      <div class="col-12 col-md-6 col-lg-3" style="color: whitesmoke;">
+        <div class="font-box text-center">
+          <h3>Practice Letters</h3>
+          <p>Improve your skills by tracing:</p>
+          <div class="sample">
+            A a B b C c D d E e
+          </div>
+          <a href="practice.html" class="btn-custom">Start Practice</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- LOGO -->
+    <div class="footer-box">
+      <h2 class="logo">Quick Calligraphy</h2>
+      <p>Elegant calligraphy art & learning platform.</p>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-box">
+      <h3>Explore</h3>
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Fonts</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="footer-box">
+      <h3>Tutorials</h3>
+      <a href="#">Beginner Guide</a>
+      <a href="#">Brush Lettering</a>
+      <a href="#">Modern Script</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>Email: calligraphy@email.com</p>
+      <p>Phone: +92 300 1234567</p>
+
+      <!-- Learn Button -->
+<button class="learn-btn"><a href="login.html">Learn With Us </a></button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Calligraphy Studio</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

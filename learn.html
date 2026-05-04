@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>Calligraphy Learn & Register</title>
+
+<style>
+
+
+.bgcolor{
+    background-color:#572E13;
+}
+
+.navbar-brand img{
+    height:60px;
+    object-fit:contain;
+}
+
+.nav-link{
+    transition:0.3s;
+}
+
+.nav-link:hover{
+    color:#f8e090 !important;
+    transform:translateY(-2px);
+}
+body{
+    margin:0;
+   
+    background:#fdf6ec; /* creamy white */
+    color:black;
+}
+
+#learn{
+    padding:40px;
+    text-align:center;
+}
+
+#learn h2{
+    color:#deb11f;
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#572E13; /* rich brown */
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    color:white;
+}
+
+.card h3{
+    color:#efdfa9;
+}
+
+#learn img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+#learn img:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #f8e090;
+}
+
+/* Buttons */
+button{
+    background:#f8e090;
+    color:#572E13;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:white;
+}
+
+/* Hide images & buttons initially */
+.images, #regBtn1, #regBtn2, #regBtn3{
+    display:none;
+    margin-top:10px;
+}
+
+/* Active images */
+.images.active{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* REGISTER PAGE */
+#registerPage{
+    display:none;
+    padding:40px;
+    text-align:center;
+    background:#fdf6ec;
+    color:black;
+}
+
+#registerPage h2{
+    color:#572E13;
+    margin-bottom:20px;
+}
+
+#registerPage form input,
+#registerPage form textarea{
+    width:95%;
+    padding:8px;
+    margin:5px 0;
+    border-radius:5px;
+    border:none;
+}
+
+#registerPage form textarea{
+    resize:none;
+}
+
+#registerPage form button{
+    margin-top:10px;
+}
+
+
+/* LOGO */
+.logo{
+    color:#f8e090;
+    font-size:28px;
+}
+
+/* LINKS */
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+/* HOVER EFFECT */
+.nav-links a:hover{
+    color:#f8e090;
+}
+
+    /* FOOTER */
+    .footer {
+
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to right, #5a2e0c, #a05a2c);
+    color: #fff;
+    padding: 40px 20px 10px;
+    animation: fadeUp 1s ease;
+    }
+
+    .footer {
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    }
+    /* FOOTER CONTAINER */
+    .footer-container {
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    }
+
+    /* FOOTER BOX */
+    .footer-box {
+    width: 22%;
+    }
+
+    /* LOGO */
+    .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #ffcc70;
+    }
+
+    /* HEADINGS */
+    .footer-box h3 {
+    color: #ffd699;
+    font-family: 'Playfair Display', serif;
+    }
+
+    /* LINKS */
+    .footer-box a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: 0.3s;
+    }
+
+    .footer-box a:hover {
+    color: #ffcc70;
+    padding-left: 6px;
+    }
+
+    /* LEARN BUTTON */
+    .learn-btn {
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #ffcc70;
+    color: #5a2e0c;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+
+    .learn-btn:hover {
+    background: white;
+    color: #a05a2c;
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER BOTTOM */
+    .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    margin-top: 15px;
+    padding-top: 10px;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-box {
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+    }@media (max-width: 480px) {
+
+    .footer {
+        padding: 25px 15px 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .footer-box h3 {
+        font-size: 16px;
+    }
+
+    .footer-box a {
+        font-size: 14px;
+    }
+
+    .learn-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+    }
+
+    
+
+</style>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bgcolor"> 
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand" href="index.html">
+      <img src="assest/images/LOGO_3-removebg-preview.png" alt="logo" style="height:60px;">
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="learn.html">Learn</a>
+        </li>
+
+        <!-- Styles Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Styles
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="arabic.html">Arabic</a></li>
+            <li><a class="dropdown-item" href="indic.html">Indic</a></li>
+            <li><a class="dropdown-item" href="greek.html">Greek</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="font-stylejazzy.html">Fonts</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<!-- LEARN SECTION -->
+<section id="learn">
+<h2>Learn Calligraphy</h2>
+
+<div class="cards">
+
+<!-- BEGINNER -->
+<div class="card">
+    <h3>Beginner</h3>
+    <p>Learn basic strokes, pen grip, and simple alphabets.</p>
+
+    <button onclick="toggleImages('b1','regBtn1')">See Ideas</button>
+
+    <div id="b1" class="images">
+        <img src="./assest/images/beginner1.jpeg">
+        <img src="./assest/images/beginner2.jpeg">
+        <img src="./assest/images/beginner3.jpeg">
+    </div>
+
+    <button id="regBtn1" onclick="openRegister('Beginner')">Register</button>
+</div>
+
+<!-- INTERMEDIATE -->
+<div class="card">
+    <h3>Intermediate</h3>
+    <p>Practice brush lettering, connections, and words.</p>
+
+    <button onclick="toggleImages('b2','regBtn2')">See Ideas</button>
+
+    <div id="b2" class="images">
+        <img src="./assest/images/intermediate1.jpeg">
+        <img src="./assest/images/intermediate2.jpeg">
+        <img src="./assest/images/intermediate3.jpeg">
+    </div>
+
+    <button id="regBtn2" onclick="openRegister('Intermediate')">Register</button>
+</div>
+ 
+<!-- ADVANCED -->
+<div class="card">
+    <h3>Advanced</h3>
+    <p>Master flourishing, layouts, and creative designs.</p>
+
+    <button onclick="toggleImages('b3','regBtn3')">See Ideas</button>
+
+    <div id="b3" class="images">
+        <img src="./assest/images/advanced1.jpeg">
+        <img src="./assest/images/advanced2.jpeg">
+        <img src="./assest/images/advanced3.jpeg">
+    </div>
+
+    <button id="regBtn3" onclick="openRegister('Advanced')">Register</button>
+</div>
+
+</div>
+</section>
+
+<!-- REGISTER PAGE SECTION -->
+<section id="registerPage">
+<h2>Register for <span id="categoryName"></span></h2>
+<form id="regForm">
+    <input type="text" placeholder="Full Name" required><br>
+    <input type="email" placeholder="Email" required><br>
+    <input type="text" placeholder="Experience Level" required><br>
+    <textarea placeholder="What do you know about Calligraphy?" rows="5"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+<button onclick="backToLearn()">Back</button>
+</section>
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- LOGO -->
+    <div class="footer-box">
+      <h2 class="logo">Quick Calligraphy</h2>
+      <p>Elegant calligraphy art & learning platform.</p>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-box">
+      <h3>Explore</h3>
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Fonts</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="footer-box">
+      <h3>Tutorials</h3>
+      <a href="#">Beginner Guide</a>
+      <a href="#">Brush Lettering</a>
+      <a href="#">Modern Script</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>Email: calligraphy@email.com</p>
+      <p>Phone: +92 300 1234567</p>
+
+      <!-- Learn Button -->
+<button class="learn-btn"><a href="login.html">Learn With Us </a></button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Calligraphy Studio</p>
+  </div>
+</footer>
+
+<script>
+// Toggle images + show register button
+function toggleImages(imagesId, btnId){
+    const imgs = document.getElementById(imagesId);
+    imgs.classList.toggle("active");
+    const btn = document.getElementById(btnId);
+    btn.style.display = imgs.classList.contains("active") ? "inline-block" : "none";
+}
+
+// Open register page
+function openRegister(category){
+    document.getElementById('learn').style.display='none';
+    document.getElementById('registerPage').style.display='block';
+    document.getElementById('categoryName').textContent = category;
+}
+
+// Back to learn section
+function backToLearn(){
+    document.getElementById('registerPage').style.display='none';
+    document.getElementById('learn').style.display='block';
+}
+
+// Form submit alert
+document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault(); // prevent page reload
+    alert("Thank you for registering!");
+    this.reset(); // optional: clear form
+    backToLearn(); // optional: go back to Learn section
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

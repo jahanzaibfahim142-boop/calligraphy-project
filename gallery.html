@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <title>InkSoul Calligraphy</title> -->
+<link rel="icon" type="image/png" sizes="32x32" href="assest/images/LOGO_3-removebg-preview.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assest/images/LOGO_3-removebg-preview.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Noto+Nastaliq+Urdu&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* 🌟 Advanced Contact Form */
+.contact {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 20px;
+    border-radius: 50px;
+    background: rgba(71, 37, 2, 0.76);
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 25px rgba(244,196,48,0.2),
+        0 0 80px rgba(0, 0, 0, 0.671);
+        border-bottom: #2e1a0f;
+}
+
+body{
+  padding-top: 80px; /* fixed navbar ke liye space */
+}
+
+/* Navbar style */
+.bgcolor{
+  background-color:#572E13;
+}
+
+/* Logo image */
+.navbar-brand img{
+  height:50px;
+  object-fit:contain;
+}
+
+/* Brand text */
+.navbar-brand span{
+  color:#f8e090;
+  font-weight:bold;
+  font-size:20px;
+}
+
+/* Links */
+.nav-link{
+  color:white !important;
+  margin: 0 10px;
+  transition:0.3s;
+}
+
+.nav-link:hover{
+  color:#f8e090 !important;
+  transform:translateY(-2px);
+}
+
+.input-group {
+    position: relative;
+    margin: 25px 0;
+}
+
+/* Icons */
+.input-group .icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ecc755;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+/* Inputs & textarea */
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(244,196,48,0.3);
+    background: transparent;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* Floating label */
+.input-group label {
+    position: absolute;
+    left: 40px;
+    top: 12px;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* Focus & valid */
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+    top: -10px;
+    left: 35px;
+    font-size: 12px;
+    color: #f4c430;
+    background: var(--dark-brown);
+    padding: 0 5px;
+}
+
+/* Glow effect */
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #f4c430;
+    box-shadow: 0 0 10px #f4c430;
+}
+
+/* Animated bottom line */
+.input-group::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #f4c430;
+    transition: 0.4s;
+}
+
+.input-group:focus-within::after {
+    width: 100%;
+}
+
+/* Textarea fix */
+.input-group.textarea .icon {
+    top: 20px;
+}
+
+.input-group.textarea label {
+    top: 12px;
+}
+
+/* Button */
+.contact button {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ecc755, #f4c430);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    color: #3b220f;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+/* Shine animation */
+.contact button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.5s;
+}
+
+.contact button:hover::before {
+    left: 100%;
+}
+
+.contact button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #f4c430;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .contact {
+        padding: 35px 15px;
+    }
+}
+/* Theme */
+:root {
+    --dark-brown: rgb(87, 46, 19);
+    --honey: #ecc755;
+    --text-light: #f5f5f5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-brown);
+    color: var(--text-light);
+}
+
+/* Navbar */
+.custom-navbar {
+    background: var(--dark-brown);
+}
+
+.logo {
+    color: var(--honey) !important;
+    text-shadow: 0 0 8px #f4c430;
+}
+
+.nav-link {
+    color: #fff !important;
+    margin: 0 10px;
+}
+
+.nav-link:hover {
+    color: var(--honey) !important;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1529655683826-aba9b3e77383') center/cover;
+    text-align: center;
+}
+
+.indic-heading {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: var(--honey);
+}
+
+.urdu-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+}
+
+/* Section */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.divider {
+    width: 80px;
+    height: 3px;
+    background: var(--honey);
+    margin: 10px auto 30px;
+}
+
+/* ✅ FIXED GALLERY (single clean version) */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+/* Card */
+.card {
+    width: 240px;
+    height: 320px;
+    background: transparent;
+    border: none;
+    perspective: 1000px;
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 0 15px #f4c430,
+        0 0 40px rgba(244,196,48,0.7),
+        0 0 80px rgba(244,196,48,0.4);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0 0 12px #f4c430);
+}
+
+.card-back {
+    background: linear-gradient(135deg, #ecc755, #f4c430);
+    color: #3b220f;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contact */
+.contact input,
+.contact textarea {
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.contact button {
+    background: var(--honey);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--dark-brown);
+}
+
+/* Footer */
+footer {
+    background: #2e1a0f;
+    padding: 15px;
+}
+
+/* ✅ RESPONSIVE */
+@media (max-width: 576px) {
+    .hero {
+        height: auto;
+        padding: 120px 20px;
+    }
+
+    .indic-heading {
+        font-size: 1.5rem;
+    }
+
+    .urdu-text {
+        font-size: 1.2rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ✅ Bootstrap Navbar -->
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bgcolor"> 
+    <div class="container ">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#"><img src="assest/images/LOGO_3-removebg-preview.png" alt=""></a>
+
+      <!-- Hamburger -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu -->
+      <div class="collapse navbar-collapse " id="navbarNav">
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+
+          <!-- Learn  -->
+          <li class="nav-item">
+            <a class="nav-link" href="learn.html">Learn</a>
+          </li>
+
+          <!-- Styles Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Styles
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="arabic.html">Arabic</a></li>
+              <li><a class="dropdown-item" href="indic.html">Indic</a></li>
+              <li><a class="dropdown-item" href="greek.html">Greek</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="font-stylejazzy.html">Fonts</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+           
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+<!-- Hero -->
+<section class="hero">
+    <h2 class="indic-heading">भारतीय सुलेख कला</h2>
+    <p>The Beauty of Calligraphy</p>
+    <p class="urdu-text">خطاطی ایک خوبصورت فن ہے</p>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <h2 class="indic-heading">Gallery</h2>
+    <div class="divider"></div>
+
+    <div class="gallery">
+
+        <!-- Cards -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/4d/8d/5b/4d8d5b21c497f1915c6a2bddcecf30f3.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/5e/b5/3a/5eb53a9cb136e6676c2ef48904944600.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/29/14/3d/29143d2a21c2a2d20ce931b19c79d259.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/56/51/4e/56514e1777d103bdb0ed29cabf5520ab.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/30/0f/b8/300fb85e394b8252740a3e07e0a390e3.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/4a/53/e4/4a53e43696c76d27ba446124e44c8825.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/59/d6/22/59d6229cfad5e6eb2960e3669bc5ac17.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/1200x/75/97/93/7597936d4a7969b6871480c5f25afc6f.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+
+
+         <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/1200x/6e/e4/f6/6ee4f6f2fd27b0f72de92790f8ae9d07.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/1200x/0e/4e/2e/0e4e2e97e1e42bd74207071caa4587b4.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/13/3b/b1/133bb1c15e6fffb0e22386623660f338.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/736x/1d/d1/45/1dd145b5bd2c73db25fcbd7fd5e47822.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/1200x/1f/67/ac/1f67ac28fa4fb3ea37004e785edc3b98.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/1200x/1f/fa/a5/1ffaa55a1eacab15a8bac1ce1606f847.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+
+       
+
+        
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://i.pinimg.com/1200x/bc/26/e3/bc26e392814bc744fc7b10641f1f0ab5.jpg">
+                </div>
+                <div class="card-back"><h3></h3></div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</section>
+
+<!-- Contact -->
+<!-- <section class="contact" id="contact">
+    <h2 class="indic-heading">Contact</h2>
+    <div class="divider"></div>
+
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Send Message</button>
+</section> -->
+<section class="contact" id="contact">
+    <h2 class="indic-heading">Contact</h2>
+    <div class="divider"></div>
+
+    <form class="contact-form">
+
+        <div class="input-group">
+            <span class="icon">👤</span>
+            <input type="text" required>
+            <label>Your Name</label>
+        </div>
+
+        <div class="input-group">
+            <span class="icon">📧</span>
+            <input type="email" required>
+            <label>Your Email</label>
+        </div>
+
+        <div class="input-group textarea">
+            <span class="icon">✉️</span>
+            <textarea rows="4" required></textarea>
+            <label>Your Message</label>
+        </div>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+</section>
+
+
+
+
+<!-- ✅ Bootstrap JS (IMPORTANT) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
